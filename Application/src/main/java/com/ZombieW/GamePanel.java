@@ -41,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
 
         double drawInterval = 1000000000/fps; //nanoseconds
         //we draw screen 60 times per second
@@ -54,7 +54,19 @@ public class GamePanel extends JPanel implements Runnable {
             update();
             repaint();
 
-            double remainingTime = nextDrawTime - System.nanoTime();
+
+            try {
+                double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime/1000000;
+                if (remainingTime < 0){
+                    remainingTime = 0;
+                }
+                Thread.sleep((long) remainingTime);
+
+                nextDrawTime += drawInterval;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -71,7 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
             locationX -= oneMove;
             System.out.println("here");
         }else if(keyInput.right) {
-            locationY += oneMove;
+            locationX += oneMove;
             System.out.println("here");
         }
     }
