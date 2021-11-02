@@ -135,6 +135,21 @@ public class Game extends Canvas{
 //        g.dispose();
 //        bs.show();
 //    }
+         //Attempting to make part of scoreboard
+//       public int ScoreDisplay(int Score){   
+//            while(/*game is running*/) {
+//                if(/*hit by zombie*/) {
+//                    Score = Score - /*damage number*/;
+//                }
+//                if(/*gets syringe*/){
+//                    Score += /*reward number*/;
+//                }
+//                if(/*gets gun*/){
+//                    Score+= /*reward number*/;
+//                }
+//            }
+//        return Score;
+//        }
 
 
 }
