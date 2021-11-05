@@ -20,13 +20,18 @@ public class GamePanel extends JPanel implements Runnable {
 
     boolean running = false;
 
-    Thread mainThread;
+
 
     KeyInput keyInput = new KeyInput();
+    Thread mainThread;
+    MainCharacter mc = new MainCharacter(this, keyInput);
 
     int locationX = 100;
     int locationY = 100;
     int oneMove = 4;
+
+//    MainCharacter mainCharacter = new MainCharacter(this, keyInput);
+
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -36,6 +41,10 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyInput);
         this.setFocusable(true);
 
+
+    }
+
+    public void startGameThread(){
         mainThread = new Thread(this);
         mainThread.start();
     }
@@ -47,8 +56,8 @@ public class GamePanel extends JPanel implements Runnable {
         //we draw screen 60 times per second
         double nextDrawTime = System.nanoTime() + drawInterval;
 
-        running = true;
-        while (running){
+        //running = true;
+        while (mainThread != null){
             //long currentTime = System.currentTimeMillis();
 
             update();
@@ -73,27 +82,29 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
 
-        if(keyInput.up == true){
-            locationY -= oneMove;
-            System.out.println("here");
-        }else if(keyInput.down){
-            locationY += oneMove;
-            System.out.println("here");
-        }else if(keyInput.left){
-            locationX -= oneMove;
-            System.out.println("here");
-        }else if(keyInput.right) {
-            locationX += oneMove;
-            System.out.println("here");
-        }
+//        if(keyInput.up == true){
+//            locationY -= oneMove;
+//            System.out.println("here");
+//        }else if(keyInput.down){
+//            locationY += oneMove;
+//            System.out.println("here");
+//        }else if(keyInput.left){
+//            locationX -= oneMove;
+//            System.out.println("here");
+//        }else if(keyInput.right) {
+//            locationX += oneMove;
+//            System.out.println("here");
+//        }
+        mc.update();
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        g2.setColor(Color.white);
-        g2.fillRect(locationX, locationY, tileSize, tileSize);
+//        g2.setColor(Color.white);
+//        g2.fillRect(locationX, locationY, tileSize, tileSize);
+        mc.draw(g2);
         g2.dispose();
     }
 }

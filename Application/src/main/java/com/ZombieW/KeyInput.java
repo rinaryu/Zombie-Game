@@ -39,20 +39,20 @@ public class KeyInput implements KeyListener {
 
         if (code == KeyEvent.VK_W){
             up = false;
-            System.out.println("pressed up");
+            //System.out.println("pressed up");
         }
         if (code == KeyEvent.VK_S){
             down = false;
-            System.out.println("pressed up");
+            //System.out.println("pressed up");
         }
         if (code == KeyEvent.VK_A){
             left = false;
-            System.out.println("pressed up");
+            //System.out.println("pressed up");
 
         }
         if (code == KeyEvent.VK_D){
             right = false;
-            System.out.println("pressed up");
+            //System.out.println("pressed up");
 
         }
     }
