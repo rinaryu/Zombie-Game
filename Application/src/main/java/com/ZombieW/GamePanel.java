@@ -16,19 +16,20 @@ public class GamePanel extends JPanel implements Runnable {
     final int screenHeight = tileSize * maxScreenRow; //576 pixels
 
     //fps
-    int fps = 60;
+    int fps = 10;
 
     boolean running = false;
 
 
 
+    GridManager gridManager = new GridManager(this);
     KeyInput keyInput = new KeyInput();
     Thread mainThread;
     MainCharacter mc = new MainCharacter(this, keyInput);
 
-    int locationX = 100;
-    int locationY = 100;
-    int oneMove = 4;
+//    int locationX = 100;
+//    int locationY = 100;
+//    int oneMove = 3;
 
 //    MainCharacter mainCharacter = new MainCharacter(this, keyInput);
 
@@ -56,26 +57,39 @@ public class GamePanel extends JPanel implements Runnable {
         //we draw screen 60 times per second
         double nextDrawTime = System.nanoTime() + drawInterval;
 
+        int counter = 0;
         //running = true;
         while (mainThread != null){
             //long currentTime = System.currentTimeMillis();
 
-            update();
-            repaint();
+            if ((keyInput.left || keyInput.right || keyInput.up || keyInput.down) && counter == 0){
 
+                update();
+                repaint();
+                counter = 1;
+            }
 
             try {
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime = remainingTime/1000000;
-                if (remainingTime < 0){
-                    remainingTime = 0;
-                }
-                Thread.sleep((long) remainingTime);
-
-                nextDrawTime += drawInterval;
+                Thread.sleep((long) 100);
+                counter = 0;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+
+
+//            try {
+//                double remainingTime = nextDrawTime - System.nanoTime();
+//                remainingTime = remainingTime/1000000;
+//                if (remainingTime < 0){
+//                    remainingTime = 0;
+//                }
+//                Thread.sleep((long) remainingTime);
+//
+//                nextDrawTime += drawInterval;
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         }
 
     }
@@ -104,6 +118,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 //        g2.setColor(Color.white);
 //        g2.fillRect(locationX, locationY, tileSize, tileSize);
+        gridManager.draw(g2);
         mc.draw(g2);
         g2.dispose();
     }
