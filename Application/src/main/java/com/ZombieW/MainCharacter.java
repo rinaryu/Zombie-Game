@@ -5,11 +5,11 @@ import java.awt.*;
 public class MainCharacter extends Character{
 
     KeyInput keyInput;
-    GamePanel gamePanel;
+    GamePanel gamePanel = new GamePanel();
 
     public MainCharacter(GamePanel gp, KeyInput ki){
-        this.gamePanel = gp;
-        this.keyInput = ki;
+        gamePanel = gp;
+        keyInput = ki;
 
         setDefaultValues();//for the parent class
     }
