@@ -67,6 +67,10 @@ public class GamePanel extends JPanel implements Runnable {
                 update();
                 repaint();
                 counter = 1;
+                keyInput.left = false;
+                keyInput.right = false;
+                keyInput.up = false;
+                keyInput.down = false;
             }
 
             try {
