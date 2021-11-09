@@ -11,6 +11,7 @@ public class MainCharacter extends Character {
     KeyInput keyInput;
     GamePanel gamePanel;
 
+
     public MainCharacter(GamePanel gp, KeyInput ki) {
         this.gamePanel = gp;
         this.keyInput = ki;
