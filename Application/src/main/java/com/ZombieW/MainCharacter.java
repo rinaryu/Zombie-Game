@@ -14,7 +14,7 @@ public class MainCharacter extends Character {
 
     public MainCharacter(GamePanel gp, KeyInput ki) {
         this.gamePanel = gp;
-        this.keyInput = ki;
+        keyInput = ki;
 
         setDefaultValues();//for the parent class
         getMainCharacterImage();

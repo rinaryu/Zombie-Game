@@ -18,7 +18,6 @@ public class Game{
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-
         window.setTitle("Zombie");
 
         GamePanel gamePanel = new GamePanel();
