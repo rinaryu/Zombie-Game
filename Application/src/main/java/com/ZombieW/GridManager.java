@@ -37,7 +37,7 @@ public class GridManager {
         }
     }
 
-    public void populateMap(){
+    private void populateMap(){
         try {
             InputStream is = getClass().getResourceAsStream("/map.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));

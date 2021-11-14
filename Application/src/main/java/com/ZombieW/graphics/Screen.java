@@ -18,10 +18,10 @@ public class Screen {
 
     public SpriteSheet sheet;
 
-    public Screen(int width, int height, SpriteSheet sheet){
+    public Screen(int width, int height, SpriteSheet newSheet){
         this.width = width;
         this.height = height;
-        this.sheet = sheet;
+        sheet = newSheet;
     }
 
     public void render(int[] pixels, int offset, int row){
