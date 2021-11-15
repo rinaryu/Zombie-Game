@@ -41,15 +41,19 @@ public class MainCharacter extends Character {
 
         //System.out.println("heelo");
 
-        if (keyInput.up == true) {
+        if (keyInput.up && gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-oneMove-52)/48+1)] != 1) {
             y -= oneMove;
-            System.out.println("hello");
-        } else if (keyInput.down) {
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
+//            System.out.println(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-52)/48+1)]);
+        } else if (keyInput.down && gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y+oneMove-52)/48+1)] != 1) {
             y += oneMove;
-        } else if (keyInput.left) {
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
+        } else if (keyInput.left && gamePanel.gridManager.mapGridNum[((x-oneMove-52)/48+1)][((y-52)/48+1)] != 1) {
             x -= oneMove;
-        } else if (keyInput.right) {
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
+        } else if (keyInput.right && gamePanel.gridManager.mapGridNum[((x+oneMove-52)/48+1)][((y-52)/48+1)] != 1) {
             x += oneMove;
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         }
         //System.out.println("update from mc");
     }
