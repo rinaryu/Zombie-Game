@@ -5,12 +5,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.Buffer;
 
 public class MainCharacter extends Character {
 
     KeyInput keyInput;
     GamePanel gamePanel;
-
 
     public MainCharacter(GamePanel gp, KeyInput ki) {
         this.gamePanel = gp;
@@ -28,9 +28,7 @@ public class MainCharacter extends Character {
 
     public void getMainCharacterImage() {
         try {
-
             sprite = ImageIO.read(getClass().getResourceAsStream("/art.png"));
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,6 +65,5 @@ public class MainCharacter extends Character {
 
         BufferedImage image = sprite;
         g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
-
     }
 }
