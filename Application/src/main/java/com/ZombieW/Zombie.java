@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Zombie {
-  private int damage;
+abstract class Zombie {
+  public int damage;
   public int x;
   public int y;
   public int oneMove;
@@ -34,27 +34,12 @@ public class Zombie {
   public void setDamage(int damage){
       this.damage = damage;
   }
-  public void getZombieImage() {
-    try {
+  abstract void getZombieImage();
 
-      sprite = ImageIO.read(getClass().getResourceAsStream("/leglessZombie.png"));
-
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-  public void update() {
-    if(mc.zombMove){
-      x -= oneMove;
-      mc.zombMove = false;
-    }
-
-  }
   public void draw(Graphics2D g2) {
 
     BufferedImage image = sprite;
-    g2.drawImage(image, x, y, gamePanel.tileSize+6, gamePanel.tileSize, null);
+    g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
 
   }
 }

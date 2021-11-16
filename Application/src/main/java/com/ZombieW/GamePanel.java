@@ -26,7 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
     KeyInput keyInput = new KeyInput();
     Thread mainThread;
     MainCharacter mc = new MainCharacter(this, keyInput);
-    Zombie zomb = new Zombie(this, mc);
+    Chaser zomb = new Chaser(this, mc);
+    Legless zomb2 = new Legless(this, mc);
 //    int locationX = 100;
 //    int locationY = 100;
 //    int oneMove = 3;
@@ -126,6 +127,7 @@ public class GamePanel extends JPanel implements Runnable {
         gridManager.draw(g2);
         mc.draw(g2);
         zomb.draw(g2);
+        zomb2.draw(g2);
         g2.dispose();
     }
 }

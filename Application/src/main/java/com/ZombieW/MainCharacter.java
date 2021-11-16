@@ -11,7 +11,6 @@ public class MainCharacter extends Character {
 
     KeyInput keyInput;
     GamePanel gamePanel;
-    boolean zombMove = false;
     public MainCharacter(GamePanel gp, KeyInput ki) {
         this.gamePanel = gp;
         this.keyInput = ki;
@@ -43,33 +42,21 @@ public class MainCharacter extends Character {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-oneMove-52)/48+1)] != 1) {
                 y -= oneMove;
             }
-            else{
-                zombMove = true;
-            }
             System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
 //            System.out.println(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-52)/48+1)]);
         } else if (keyInput.down) {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y+oneMove-52)/48+1)] != 1){
                 y += oneMove;
             }
-            else{
-                zombMove = true;
-            }
             System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         } else if (keyInput.left) {
             if(gamePanel.gridManager.mapGridNum[((x-oneMove-52)/48+1)][((y-52)/48+1)] != 1){
                 x -= oneMove;
             }
-            else{
-                zombMove = true;
-            }
             System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         } else if (keyInput.right) {
             if(gamePanel.gridManager.mapGridNum[((x+oneMove-52)/48+1)][((y-52)/48+1)] != 1) {
                 x += oneMove;
-            }
-            else{
-                zombMove = true;
             }
             System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         }
