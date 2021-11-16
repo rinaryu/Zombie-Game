@@ -37,7 +37,7 @@ public class Zombie {
   public void getZombieImage() {
     try {
 
-      sprite = ImageIO.read(getClass().getResourceAsStream("/sprite1.png"));
+      sprite = ImageIO.read(getClass().getResourceAsStream("/leglessZombie.png"));
 
 
     } catch (IOException e) {
@@ -54,7 +54,7 @@ public class Zombie {
   public void draw(Graphics2D g2) {
 
     BufferedImage image = sprite;
-    g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+    g2.drawImage(image, x, y, gamePanel.tileSize+6, gamePanel.tileSize, null);
 
   }
 }
