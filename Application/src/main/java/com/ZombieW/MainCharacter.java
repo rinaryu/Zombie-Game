@@ -43,7 +43,7 @@ public class MainCharacter extends Character {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-oneMove-52)/48+1)] != 1) {
                 y -= oneMove;
             }
-            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
+            System.out.println("X: " + x + ", Y: " + y);
 //            System.out.println(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-52)/48+1)]);
         } else if (keyInput.down) {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y+oneMove-52)/48+1)] != 1){

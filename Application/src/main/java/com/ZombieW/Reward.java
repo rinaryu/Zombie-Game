@@ -14,8 +14,6 @@ public class Reward {
     GamePanel gamePanel;
     public Reward(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        this.x = 292;
-        this.y = 292;
         collectionStatus = false;
         getRewardImg();
     }

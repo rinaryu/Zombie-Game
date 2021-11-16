@@ -28,7 +28,8 @@ public class GamePanel extends JPanel implements Runnable {
     MainCharacter mc = new MainCharacter(this, keyInput);
     Chaser zomb = new Chaser(this, mc);
     Legless zomb2 = new Legless(this, mc);
-    Reward r = new Reward(this);
+    Reward r[] = new Reward[5];
+
 //    int locationX = 100;
 //    int locationY = 100;
 //    int oneMove = 3;
@@ -44,7 +45,25 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyInput);
         this.setFocusable(true);
 
+        for(int i = 0; i < r.length; i++){
+            r[i] = new Reward(this);
+            int temp = generateRandomX();
+            int temp2 = generateRandomY();
+            System.out.println(temp + "," + temp2);
+            while(this.gridManager.mapGridNum[temp][temp2] == 1){
+                temp = generateRandomX();
+                temp2 = generateRandomY();
+            }
+            r[i].x = (temp-1)*48+52;
+            r[i].y = (temp2-1)*48+52;
+        }
 
+    }
+    public int generateRandomX(){
+        return (int) ((Math.random() * (maxScreenCol - 2 - 1)) + 1);
+    }
+    public int generateRandomY(){
+        return (int) ((Math.random() * (maxScreenRow - 2 - 1)) + 1);
     }
 
     public void startGameThread(){
@@ -117,7 +136,9 @@ public class GamePanel extends JPanel implements Runnable {
 //        }
         mc.update();
         zomb.update();
-        r.update();
+        for(int i = 0; i < r.length; i++){
+            r[i].update();
+        }
     }
 
     public void paintComponent(Graphics g){
@@ -130,7 +151,9 @@ public class GamePanel extends JPanel implements Runnable {
         mc.draw(g2);
         zomb.draw(g2);
         zomb2.draw(g2);
-        r.draw(g2);
+        for(int i = 0; i < r.length; i++){
+            r[i].draw(g2);
+        }
         g2.dispose();
     }
 }
