@@ -6,7 +6,7 @@ public class Character {
 
     public int x, y;
     public int oneMove;
-
+    public int score;
     public BufferedImage sprite;
     //public String
 

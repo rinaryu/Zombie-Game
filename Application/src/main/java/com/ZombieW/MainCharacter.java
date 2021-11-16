@@ -22,6 +22,7 @@ public class MainCharacter extends Character {
     public void setDefaultValues() {
         x = 100;
         y = 100;
+        score = 0;
         oneMove = 16*3; // was 4
     }
 
