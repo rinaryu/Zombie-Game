@@ -1,4 +1,4 @@
-package com.ZombieW.graphics;
+package com.ZombieW;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
