@@ -26,8 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
     KeyInput keyInput = new KeyInput();
     Thread mainThread;
     MainCharacter mc = new MainCharacter(this, keyInput);
-    Chaser zomb = new Chaser(this, mc);
-    Legless zomb2 = new Legless(this, mc);
+    Chaser zomb2 = new Chaser(this, mc);
+    Legless zomb[] = new Legless[3];
     Reward r[] = new Reward[5];
 
 //    int locationX = 100;
@@ -49,13 +49,23 @@ public class GamePanel extends JPanel implements Runnable {
             r[i] = new Reward(this);
             int temp = generateRandomX();
             int temp2 = generateRandomY();
-            System.out.println(temp + "," + temp2);
             while(this.gridManager.mapGridNum[temp][temp2] == 1){
                 temp = generateRandomX();
                 temp2 = generateRandomY();
             }
             r[i].x = (temp-1)*48+52;
             r[i].y = (temp2-1)*48+52;
+        }
+        for(int i = 0; i < zomb.length; i++){
+            zomb[i] = new Legless(this, mc);
+            int temp = generateRandomX();
+            int temp2 = generateRandomY();
+            while(this.gridManager.mapGridNum[temp][temp2] == 1){
+                temp = generateRandomX();
+                temp2 = generateRandomY();
+            }
+            zomb[i].x = (temp-1)*48+52;
+            zomb[i].y = (temp2-1)*48+52;
         }
 
     }
@@ -135,7 +145,7 @@ public class GamePanel extends JPanel implements Runnable {
 //            System.out.println("here");
 //        }
         mc.update();
-        zomb.update();
+        zomb2.update();
         for(int i = 0; i < r.length; i++){
             r[i].update();
         }
@@ -149,7 +159,9 @@ public class GamePanel extends JPanel implements Runnable {
 //        g2.fillRect(locationX, locationY, tileSize, tileSize);
         gridManager.draw(g2);
         mc.draw(g2);
-        zomb.draw(g2);
+        for(int i = 0; i < zomb.length; i++){
+            zomb[i].draw(g2);
+        }
         zomb2.draw(g2);
         for(int i = 0; i < r.length; i++){
             r[i].draw(g2);
