@@ -22,8 +22,6 @@ abstract class Zombie {
   public Zombie(GamePanel gp, MainCharacter mc){
     this.gamePanel = gp;
     this.mc = mc;
-    this.damage = 3;
-
     setDefaultValues();//for the parent class
     getZombieImage();
 

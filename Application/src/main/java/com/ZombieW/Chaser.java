@@ -29,6 +29,9 @@ class Chaser extends Zombie{
                 y += oneMove;
             }
         }
+        if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
+            System.out.println("Game Over");
+        }
     }
 
 }
