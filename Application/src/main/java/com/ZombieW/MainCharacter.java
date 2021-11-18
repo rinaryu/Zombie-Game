@@ -11,6 +11,7 @@ public class MainCharacter extends Character {
 
     KeyInput keyInput;
     GamePanel gamePanel;
+    public int rewardsCollected;
 
     /**
      * Returns a MainCharacter object which can then be drawn onto the screen
@@ -34,6 +35,7 @@ public class MainCharacter extends Character {
         y = 100;
         score = 0;
         oneMove = 16*3; // was 4
+        rewardsCollected = 0;
     }
 
     /**

@@ -58,10 +58,5 @@ abstract class Zombie {
    * Displays the zombie onto the GamePanel object
    * @param g2 the graphics2D Object which is used to display the zombie onto the screen
    */
-  public void draw(Graphics2D g2) {
-
-    BufferedImage image = sprite;
-    g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
-
-  }
+  abstract public void draw(Graphics2D g2);
 }

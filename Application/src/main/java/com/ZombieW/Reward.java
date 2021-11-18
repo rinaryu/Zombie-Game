@@ -67,6 +67,7 @@ public class Reward {
         if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
             gamePanel.mc.score += getPoints();
             setCollectionStatus(true);
+            gamePanel.mc.rewardsCollected++;
         }
     }
     public void draw(Graphics2D g2){

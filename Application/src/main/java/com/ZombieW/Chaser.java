@@ -1,6 +1,8 @@
 package com.ZombieW;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 class Chaser extends Zombie{
@@ -32,6 +34,12 @@ class Chaser extends Zombie{
         if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
             System.out.println("Game Over");
         }
+    }
+    public void draw(Graphics2D g2) {
+
+        BufferedImage image = sprite;
+        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+
     }
 
 }

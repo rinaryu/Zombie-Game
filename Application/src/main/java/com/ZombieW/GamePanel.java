@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     Chaser zomb2 = new Chaser(this, mc);
     Legless zomb[] = new Legless[3];
     Reward r[] = new Reward[5];
-
+    Exit exit = new Exit(this);
 //    int locationX = 100;
 //    int locationY = 100;
 //    int oneMove = 3;
@@ -149,6 +149,10 @@ public class GamePanel extends JPanel implements Runnable {
         for(int i = 0; i < r.length; i++){
             r[i].update();
         }
+        for(int i = 0; i < zomb.length; i++){
+            zomb[i].update();
+        }
+        exit.update();
     }
 
     public void paintComponent(Graphics g){
@@ -166,6 +170,7 @@ public class GamePanel extends JPanel implements Runnable {
         for(int i = 0; i < r.length; i++){
             r[i].draw(g2);
         }
+        exit.draw(g2);
         g2.dispose();
     }
 }
