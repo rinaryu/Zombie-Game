@@ -11,6 +11,13 @@ public class MainCharacter extends Character {
 
     KeyInput keyInput;
     GamePanel gamePanel;
+
+    /**
+     * Returns a MainCharacter object which can then be drawn onto the screen
+     * @param gp the panel on which the object will be displayed on
+     * @param ki the object which handles the key inputs from the user used to
+     *           control the character.
+     */
     public MainCharacter(GamePanel gp, KeyInput ki) {
         this.gamePanel = gp;
         this.keyInput = ki;
@@ -19,6 +26,9 @@ public class MainCharacter extends Character {
         getMainCharacterImage();
     }
 
+    /**
+     * Sets the default values for the object when initialized
+     */
     public void setDefaultValues() {
         x = 100;
         y = 100;
@@ -26,6 +36,10 @@ public class MainCharacter extends Character {
         oneMove = 16*3; // was 4
     }
 
+    /**
+     * Fetches the image/sprite from the folder and sets the sprite attribute in the
+     * Main character class to the fetched image
+     */
     public void getMainCharacterImage() {
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/art.png"));
@@ -35,6 +49,10 @@ public class MainCharacter extends Character {
         }
     }
 
+    /**
+     * Checks the KeyInput object in the MainCharacter class for user input and moves the
+     * character accordingly on the GamePanel Object.
+     */
     public void update() {
 
         //System.out.println("heelo");
@@ -64,6 +82,10 @@ public class MainCharacter extends Character {
         //System.out.println("update from mc");
     }
 
+    /**
+     * Displays the character onto the GamePanel object
+     * @param g2 the graphics2D Object which is used to display the main character onto the screen
+     */
     public void draw(Graphics2D g2) {
 
         //System.out.println("draw from mc");
