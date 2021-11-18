@@ -13,6 +13,10 @@ public class Game{
     public int tickCount = 0;
     public boolean running = false;
 
+    /**
+     * Creates the window in which the game is running on and initializes the map/GamePanel
+     * @param args
+     */
 
     public static void main(String[] args){
         JFrame window = new JFrame();

@@ -17,7 +17,10 @@ public class Reward {
         collectionStatus = false;
         getRewardImg();
     }
-    //gets and sets the reward image -- drawn using a different method
+
+    /**
+     * Fetches the reward image and sets the reward attribute to the image fetched -- drawn using a different method
+     */
     private void getRewardImg() {
         try {
             reward = ImageIO.read(getClass().getResourceAsStream("/reward.png"));
