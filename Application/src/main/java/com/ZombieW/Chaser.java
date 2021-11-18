@@ -5,10 +5,22 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ *class used to making the zombie that chases the player 
+ */
 class Chaser extends Zombie{
+
+    /**
+     * @param gp is the panel on which the object will be displayed on
+     * @param mc is the main character that the zombie is tring to get
+     */
     public Chaser(GamePanel gp, MainCharacter mc){
         super(gp, mc);
     }
+
+    /**
+     * getting the image of the chaser zombie
+     */
     public void getZombieImage() {
         try {
 
@@ -19,6 +31,11 @@ class Chaser extends Zombie{
             e.printStackTrace();
         }
     }
+
+    /**
+     * this allows for the zombie to chase the character
+     * if the character is caught the game is over
+     */
     public void update() {
         if (mc.x < this.x && gamePanel.gridManager.mapGridNum[((x - oneMove - 52) / 48 + 1)][((y - 52) / 48 + 1)] != 1) {
             x -= oneMove;
@@ -35,6 +52,10 @@ class Chaser extends Zombie{
             System.out.println("Game Over");
         }
     }
+    /**
+     * used to draw the moving zombie to the game
+     * @param g2 the graphics2D Object which is used to display the chaser zombie onto the screen
+     */
     public void draw(Graphics2D g2) {
 
         BufferedImage image = sprite;
