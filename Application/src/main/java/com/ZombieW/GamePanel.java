@@ -20,8 +20,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     boolean running = false;
 
-
-
     GridManager gridManager = new GridManager(this);
     KeyInput keyInput = new KeyInput();
     Thread mainThread;

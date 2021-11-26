@@ -12,6 +12,7 @@ public class Reward {
     public int y;
     public BufferedImage reward;
     GamePanel gamePanel;
+
     public Reward(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         collectionStatus = false;
