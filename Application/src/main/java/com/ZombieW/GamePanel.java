@@ -38,7 +38,6 @@ public class GamePanel extends JPanel implements Runnable {
 
 //    MainCharacter mainCharacter = new MainCharacter(this, keyInput);
 
-
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -85,7 +84,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-
         double drawInterval = 1000000000/fps; //nanoseconds
         //we draw screen 60 times per second
         double nextDrawTime = System.nanoTime() + drawInterval;
@@ -107,14 +105,11 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             try {
-                Thread.sleep((long) 100);
+                Thread.sleep(100);
                 counter = 0;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-
-
 //            try {
 //                double remainingTime = nextDrawTime - System.nanoTime();
 //                remainingTime = remainingTime/1000000;
@@ -128,11 +123,9 @@ public class GamePanel extends JPanel implements Runnable {
 //                e.printStackTrace();
 //            }
         }
-
     }
 
     public void update(){
-
 //        if(keyInput.up == true){
 //            locationY -= oneMove;
 //            System.out.println("here");
@@ -157,6 +150,15 @@ public class GamePanel extends JPanel implements Runnable {
         exit.update();
     }
 
+    private void scoreUpdate() {
+        //TODO: unfinished --> trying to add score tracker number || problem: label not displaying on panel
+        String score = String.valueOf(mc.rewardsCollected);
+        JLabel scoreLabel = new JLabel(score);
+        add(scoreLabel);
+        scoreLabel.setLocation(200, 3);
+        scoreLabel.setSize(20,20);
+    }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
@@ -166,6 +168,7 @@ public class GamePanel extends JPanel implements Runnable {
         gridManager.draw(g2);
         mc.draw(g2);
 
+//        scoreUpdate();
         scores.draw(g2);
 
         for(int i = 0; i < zomb.length; i++){

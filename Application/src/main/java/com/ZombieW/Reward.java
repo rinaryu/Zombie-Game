@@ -63,7 +63,7 @@ public class Reward {
      * Sets the attribute status to the boolean parameter
      * @param status
      */
-    public void setCollectionStatus(boolean status) { collectionStatus = status; }
+    private void setCollectionStatus(boolean status) { collectionStatus = status; }
     public void update(){
         if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
             gamePanel.mc.score += getPoints();

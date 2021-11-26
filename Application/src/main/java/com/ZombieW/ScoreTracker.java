@@ -4,7 +4,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.nio.Buffer;
 
 public class ScoreTracker {
     private int timeStart;
@@ -30,6 +29,7 @@ public class ScoreTracker {
             e.printStackTrace();
         }
     }
+//    public BufferedImage getBoardImg() { return boardImg;}
 
     public void draw(Graphics2D g2) {
         int sizeW = gamePanel.tileSize + 40;
