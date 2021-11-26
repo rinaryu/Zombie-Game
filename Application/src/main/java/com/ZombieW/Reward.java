@@ -73,7 +73,7 @@ public class Reward {
     public void draw(Graphics2D g2){
         BufferedImage image = reward;
         if(getCollectStatus() == false) {
-            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+            g2.drawImage(image, x, y, gamePanel.tileSize-5, gamePanel.tileSize-10, null);
         }
     }
 }
