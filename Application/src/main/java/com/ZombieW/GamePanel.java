@@ -2,6 +2,7 @@ package com.ZombieW;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -23,6 +24,9 @@ public class GamePanel extends JPanel implements Runnable {
     GridManager gridManager = new GridManager(this);
     KeyInput keyInput = new KeyInput();
     Thread mainThread;
+
+    ScoreTracker scores = new ScoreTracker(this);
+
     MainCharacter mc = new MainCharacter(this, keyInput);
     Chaser zomb2 = new Chaser(this, mc);
     Legless zomb[] = new Legless[3];
@@ -161,6 +165,9 @@ public class GamePanel extends JPanel implements Runnable {
 //        g2.fillRect(locationX, locationY, tileSize, tileSize);
         gridManager.draw(g2);
         mc.draw(g2);
+
+        scores.draw(g2);
+
         for(int i = 0; i < zomb.length; i++){
             zomb[i].draw(g2);
         }
@@ -168,7 +175,9 @@ public class GamePanel extends JPanel implements Runnable {
         for(int i = 0; i < r.length; i++){
             r[i].draw(g2);
         }
-        exit.draw(g2);
+
+        //TODO: if all rewards are collected, draw the exit
+//        exit.draw(g2);
         g2.dispose();
     }
 }
