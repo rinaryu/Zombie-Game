@@ -2,8 +2,11 @@ package com.ZombieW;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Scanner;
 
+/**
+ * This class creates the main game panel that draws all the graphical assets including the grid map board and its
+ * frame size.
+ */
 public class GamePanel extends JPanel implements Runnable {
 
     final int size = 16; //standard size
@@ -70,18 +73,34 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
     }
+
+    /**
+     * Generates random x coordinate integer value.
+     * @return x coordinate
+     */
     public int generateRandomX(){
         return (int) ((Math.random() * (maxScreenCol - 2 - 1)) + 1);
     }
+
+    /**
+     * Generates random y coordinate integer value.
+     * @return y coordinate
+     */
     public int generateRandomY(){
         return (int) ((Math.random() * (maxScreenRow - 2 - 1)) + 1);
     }
 
+    /**
+     * Starts the main game thread.
+     */
     public void startGameThread(){
         mainThread = new Thread(this);
         mainThread.start();
     }
 
+    /**
+     * While game run time, updates character movement position.
+     */
     @Override
     public void run() {
         double drawInterval = 1000000000/fps; //nanoseconds
@@ -125,6 +144,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    /**
+     * Updates main character and enemy character position.
+     */
     public void update(){
 //        if(keyInput.up == true){
 //            locationY -= oneMove;
@@ -159,6 +181,10 @@ public class GamePanel extends JPanel implements Runnable {
         scoreLabel.setSize(20,20);
     }
 
+    /**
+     * Calls draw methods to create graphics on game frame for each respective asset.
+     * @param g 
+     */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
