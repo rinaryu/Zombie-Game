@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- *class used to making the zombie that chases the player 
+ *Class used to making the zombie that chases the player
  */
 class Chaser extends Zombie{
 

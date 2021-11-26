@@ -5,6 +5,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * This is an abstract class for a zombie character.
+ * It contains static attributes and getter/setter methods.
+ * As well as a draw method for the zombie graphic.
+ */
 abstract class Zombie {
   public int damage;
   public int x;

@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * Sets all attributes required for main character as well as its graphic image. 
+ * Sets all attributes required for main character as well as its graphic image.
  */
 public class MainCharacter extends Character {
 

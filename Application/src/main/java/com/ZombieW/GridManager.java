@@ -21,6 +21,9 @@ public class GridManager {
         populateMap();
     }
 
+    /**
+     *
+     */
     public void getGridImage(){
         try{
             //for (int i = 0; i<=9; i++){
@@ -36,6 +39,9 @@ public class GridManager {
         }
     }
 
+    /**
+     *
+     */
     private void populateMap(){
         try {
             InputStream is = getClass().getResourceAsStream("/tempMap.txt");
@@ -67,6 +73,10 @@ public class GridManager {
         }
     }
 
+    /**
+     *
+     * @param g2
+     */
     public void draw(Graphics2D g2){
         //g2.drawImage(grids[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
         int col = 0;
