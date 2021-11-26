@@ -4,9 +4,10 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.Buffer;
 
+/**
+ * Sets all attributes required for main character as well as its graphic image. 
+ */
 public class MainCharacter extends Character {
 
     KeyInput keyInput;

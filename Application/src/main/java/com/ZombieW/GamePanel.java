@@ -183,7 +183,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     /**
      * Calls draw methods to create graphics on game frame for each respective asset.
-     * @param g 
+     * @param g
      */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
