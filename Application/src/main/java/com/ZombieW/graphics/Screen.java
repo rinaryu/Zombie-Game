@@ -1,6 +1,11 @@
 package com.ZombieW.graphics;
 
+import javax.imageio.IIOException;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.font.FontRenderContext;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Screen {
 
@@ -59,8 +64,5 @@ public class Screen {
                 }
             }
         }
-
-
     }
-
 }

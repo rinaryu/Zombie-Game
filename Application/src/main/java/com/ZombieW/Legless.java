@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * class for different type of zombie. One without legs
+ * which deals 3 damage
+ */
 class Legless extends Zombie{
     private int damage;
     public boolean defeated;
@@ -12,6 +16,10 @@ class Legless extends Zombie{
         super(gp, mc);
         damage = 3;
     }
+    /**
+     * Used for getting the image of the legless zombie
+     *
+     */
     public void getZombieImage() {
         try {
 
@@ -22,6 +30,10 @@ class Legless extends Zombie{
             e.printStackTrace();
         }
     }
+    /**
+     * updating the score if the zombie and player land on same tile
+     * or if the score is less than 0, the game is over.
+     */
     public void update(){
         if(gamePanel.mc.x == this.x && gamePanel.mc.y == this.y){
             gamePanel.mc.score = gamePanel.mc.score - damage;
@@ -31,6 +43,10 @@ class Legless extends Zombie{
             System.out.println("Game Over");
         }
     }
+    /**
+     * used for drawing the image to the game
+     * @param g2 the graphics2D Object which is used to display the legless zombie onto the screen
+     */
     public void draw(Graphics2D g2) {
         if(!defeated) {
             BufferedImage image = sprite;

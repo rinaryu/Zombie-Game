@@ -8,6 +8,4 @@ public class Character {
     public int oneMove;
     public int score;
     public BufferedImage sprite;
-    //public String
-
 }

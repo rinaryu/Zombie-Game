@@ -17,7 +17,6 @@ public class Game{
      * Creates the window in which the game is running on and initializes the map/GamePanel
      * @param args
      */
-
     public static void main(String[] args){
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,8 +34,5 @@ public class Game{
         gamePanel.startGameThread();
 
     }
-
-
-
 }
 

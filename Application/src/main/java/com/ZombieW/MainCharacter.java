@@ -4,9 +4,10 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.Buffer;
 
+/**
+ * Sets all attributes required for main character as well as its graphic image.
+ */
 public class MainCharacter extends Character {
 
     KeyInput keyInput;
@@ -45,7 +46,6 @@ public class MainCharacter extends Character {
     public void getMainCharacterImage() {
         try {
             sprite = ImageIO.read(getClass().getResourceAsStream("/art.png"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,9 +56,6 @@ public class MainCharacter extends Character {
      * character accordingly on the GamePanel Object.
      */
     public void update() {
-
-        //System.out.println("heelo");
-
         if (keyInput.up) {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-oneMove-52)/48+1)] != 1) {
                 y -= oneMove;
@@ -81,7 +78,6 @@ public class MainCharacter extends Character {
             }
             System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         }
-        //System.out.println("update from mc");
     }
 
     /**
@@ -89,9 +85,6 @@ public class MainCharacter extends Character {
      * @param g2 the graphics2D Object which is used to display the main character onto the screen
      */
     public void draw(Graphics2D g2) {
-
-        //System.out.println("draw from mc");
-
 //        g2.setColor(Color.white);
 //        g2.fillRect(x, y, gamePanel.tileSize, gamePanel.tileSize);
 

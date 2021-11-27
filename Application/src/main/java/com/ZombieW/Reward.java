@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Class that holds static fields for the in-game rewards.
+ * Also has getter/setter methods for the certain static fields. 
+ */
 public class Reward {
     private boolean collectionStatus;
     private int pointsRewarded;
@@ -12,6 +16,7 @@ public class Reward {
     public int y;
     public BufferedImage reward;
     GamePanel gamePanel;
+
     public Reward(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         collectionStatus = false;
@@ -62,7 +67,7 @@ public class Reward {
      * Sets the attribute status to the boolean parameter
      * @param status
      */
-    public void setCollectionStatus(boolean status) { collectionStatus = status; }
+    private void setCollectionStatus(boolean status) { collectionStatus = status; }
     public void update(){
         if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
             gamePanel.mc.score += getPoints();
@@ -70,10 +75,15 @@ public class Reward {
             gamePanel.mc.rewardsCollected++;
         }
     }
+
+    /**
+     * Draws reward image if it has not been collected yet.
+     * @param g2
+     */
     public void draw(Graphics2D g2){
         BufferedImage image = reward;
-        if(getCollectStatus() == false) {
-            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        if(!getCollectStatus()) {
+            g2.drawImage(image, x, y, gamePanel.tileSize-5, gamePanel.tileSize-10, null);
         }
     }
 }

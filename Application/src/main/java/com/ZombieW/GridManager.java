@@ -17,11 +17,13 @@ public class GridManager {
         grids = new Grid[10];
         mapGridNum = new int[gp.maxScreenCol][gp.maxScreenRow];
 
-
         getGridImage();
         populateMap();
     }
 
+    /**
+     *
+     */
     public void getGridImage(){
         try{
             //for (int i = 0; i<=9; i++){
@@ -37,6 +39,9 @@ public class GridManager {
         }
     }
 
+    /**
+     *
+     */
     private void populateMap(){
         try {
             InputStream is = getClass().getResourceAsStream("/tempMap.txt");
@@ -68,18 +73,19 @@ public class GridManager {
         }
     }
 
+    /**
+     *
+     * @param g2
+     */
     public void draw(Graphics2D g2){
         //g2.drawImage(grids[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
-
         int col = 0;
         int row = 0;
         int x = 0;
         int y = 0;
 
         while (col < gp.maxScreenCol && row < gp.maxScreenRow){
-
             int gridType = mapGridNum[col][row];
-
             g2.drawImage(grids[gridType].image, x, y, gp.tileSize, gp.tileSize, null);
             col++;
             x += gp.tileSize;
