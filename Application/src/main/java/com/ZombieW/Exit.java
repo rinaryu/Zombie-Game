@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Exit {
     public GamePanel gamePanel;
     public boolean exitable;
-    public BufferedImage sprite;
+    private BufferedImage sprite;
     private int x;
     private int y;
 
@@ -48,7 +48,7 @@ public class Exit {
             exitable = true;
         }
         if(exitable){
-            System.out.println("GG");
+//            System.out.println("GG");
             //win here
         }
     }

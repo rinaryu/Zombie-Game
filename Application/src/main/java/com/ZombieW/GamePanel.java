@@ -174,7 +174,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void scoreUpdate() {
         //TODO: unfinished --> trying to add score tracker number || problem: label not displaying on panel
-        String score = String.valueOf(mc.rewardsCollected);
+        String score = String.valueOf(mc.score);
         JLabel scoreLabel = new JLabel(score);
         add(scoreLabel);
         scoreLabel.setLocation(200, 3);
@@ -194,7 +194,7 @@ public class GamePanel extends JPanel implements Runnable {
         gridManager.draw(g2);
         mc.draw(g2);
 
-//        scoreUpdate();
+        scoreUpdate();
         scores.draw(g2);
 
         for(int i = 0; i < zomb.length; i++){
@@ -206,7 +206,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         //TODO: if all rewards are collected, draw the exit
-//        exit.draw(g2);
+        if(exit.exitable) {
+            exit.draw(g2);
+        }
         g2.dispose();
     }
 }
