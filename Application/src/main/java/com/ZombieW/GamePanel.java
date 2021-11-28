@@ -204,10 +204,12 @@ public class GamePanel extends JPanel implements Runnable {
         for(int i = 0; i < r.length; i++){
             r[i].draw(g2);
         }
-
-        //TODO: if all rewards are collected, draw the exit
+        
         if(exit.exitable) {
             exit.draw(g2);
+        }
+        if(exit.exitable && mc.x == 676 && mc.y == 484){
+            exit.drawWin(g2);
         }
         g2.dispose();
     }

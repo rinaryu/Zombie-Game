@@ -89,7 +89,6 @@ public class MainCharacter extends Character {
 //        g2.setColor(Color.white);
 //        g2.fillRect(x, y, gamePanel.tileSize, gamePanel.tileSize);
 
-        BufferedImage image = sprite;
-        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(sprite, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

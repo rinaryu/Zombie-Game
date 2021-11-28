@@ -11,7 +11,8 @@ import java.io.IOException;
 public class Exit {
     public GamePanel gamePanel;
     public boolean exitable;
-    private BufferedImage sprite;
+    private BufferedImage exitDoor;
+    private BufferedImage winScreen;
     private int x;
     private int y;
 
@@ -31,7 +32,8 @@ public class Exit {
      */
     public void getExitImage() {
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/exit.png"));
+            exitDoor = ImageIO.read(getClass().getResourceAsStream("/exit.png"));
+            winScreen = ImageIO.read(getClass().getResourceAsStream("/win.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,11 +47,6 @@ public class Exit {
     public void update(){
         if(gamePanel.mc.rewardsCollected == 6){
             exitable = true;
-            System.out.println("exitable becomes true");
-        }
-        if(exitable && gamePanel.mc.x == 676 && gamePanel.mc.y == 484){
-            System.out.println("aldjfalsd");
-            //win here
         }
     }
 
@@ -57,9 +54,13 @@ public class Exit {
      * @param g2 the graphics2D Object which is used to display the exit onto the screen
      */
     public void draw(Graphics2D g2) {
-        BufferedImage image = sprite;
-        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(exitDoor, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+    }
 
+    public void drawWin(Graphics2D g2) {
+        int x = 150;
+        int y = 50;
+        g2.drawImage(winScreen, x, y, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
     }
 
 }
