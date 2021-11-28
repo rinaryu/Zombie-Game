@@ -9,6 +9,7 @@ import java.io.IOException;
  *Class used to making the zombie that chases the player
  */
 class Chaser extends Zombie{
+    private BufferedImage gameOverSc;
 
     /**
      * @param gp is the panel on which the object will be displayed on
@@ -23,10 +24,8 @@ class Chaser extends Zombie{
      */
     public void getZombieImage() {
         try {
-
             sprite = ImageIO.read(getClass().getResourceAsStream("/movingZombie.png"));
-
-
+            gameOverSc = ImageIO.read(getClass().getResourceAsStream("/gameOver.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,19 +47,21 @@ class Chaser extends Zombie{
                 y += oneMove;
             }
         }
-        if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
-            System.out.println("Game Over");
-        }
     }
     /**
      * used to draw the moving zombie to the game
      * @param g2 the graphics2D Object which is used to display the chaser zombie onto the screen
      */
     public void draw(Graphics2D g2) {
-
         BufferedImage image = sprite;
         g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
 
+        int posX = 150;
+        int posY = 50;
+        if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
+            g2.drawImage(gameOverSc, posX, posY, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
+            gamePanel.gameCont = false;
+        }
     }
 
 }

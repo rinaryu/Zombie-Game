@@ -8,6 +8,7 @@ import java.awt.*;
  * frame size.
  */
 public class GamePanel extends JPanel implements Runnable {
+    public boolean gameCont = true;
 
     final int size = 16; //standard size
     final int scale = 3;
@@ -22,8 +23,6 @@ public class GamePanel extends JPanel implements Runnable {
     //fps
     int fps = 10;
 
-    boolean running = false;
-
     GridManager gridManager = new GridManager(this);
     KeyInput keyInput = new KeyInput();
     Thread mainThread;
@@ -31,15 +30,10 @@ public class GamePanel extends JPanel implements Runnable {
     ScoreTracker scores = new ScoreTracker(this);
 
     MainCharacter mc = new MainCharacter(this, keyInput);
-    Chaser zomb2 = new Chaser(this, mc);
+    Chaser movingZomb = new Chaser(this, mc);
     Legless zomb[] = new Legless[3];
     Reward r[] = new Reward[5];
     Exit exit = new Exit(this);
-//    int locationX = 100;
-//    int locationY = 100;
-//    int oneMove = 3;
-
-//    MainCharacter mainCharacter = new MainCharacter(this, keyInput);
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -108,9 +102,7 @@ public class GamePanel extends JPanel implements Runnable {
         double nextDrawTime = System.nanoTime() + drawInterval;
 
         int counter = 0;
-        //running = true;
-        while (mainThread != null){
-            //long currentTime = System.currentTimeMillis();
+        while (mainThread != null && gameCont){
 
             if ((keyInput.left || keyInput.right || keyInput.up || keyInput.down) && counter == 0){
 
@@ -129,18 +121,6 @@ public class GamePanel extends JPanel implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-//            try {
-//                double remainingTime = nextDrawTime - System.nanoTime();
-//                remainingTime = remainingTime/1000000;
-//                if (remainingTime < 0){
-//                    remainingTime = 0;
-//                }
-//                Thread.sleep((long) remainingTime);
-//
-//                nextDrawTime += drawInterval;
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
         }
     }
 
@@ -148,21 +128,8 @@ public class GamePanel extends JPanel implements Runnable {
      * Updates main character and enemy character position.
      */
     public void update(){
-//        if(keyInput.up == true){
-//            locationY -= oneMove;
-//            System.out.println("here");
-//        }else if(keyInput.down){
-//            locationY += oneMove;
-//            System.out.println("here");
-//        }else if(keyInput.left){
-//            locationX -= oneMove;
-//            System.out.println("here");
-//        }else if(keyInput.right) {
-//            locationX += oneMove;
-//            System.out.println("here");
-//        }
         mc.update();
-        zomb2.update();
+        movingZomb.update();
         for(int i = 0; i < r.length; i++){
             r[i].update();
         }
@@ -189,28 +156,25 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-//        g2.setColor(Color.white);
-//        g2.fillRect(locationX, locationY, tileSize, tileSize);
         gridManager.draw(g2);
-        mc.draw(g2);
 
-        scoreUpdate();
-        scores.draw(g2);
+        scoreUpdate(); //TODO: related to fixing scoreboard
 
+        scores.draw(g2); //score board graphic image
         for(int i = 0; i < zomb.length; i++){
             zomb[i].draw(g2);
         }
-        zomb2.draw(g2);
         for(int i = 0; i < r.length; i++){
             r[i].draw(g2);
         }
-
+        movingZomb.draw(g2);
         if(exit.exitable) {
             exit.draw(g2);
             if(mc.x == 676 && mc.y == 484) {
                 exit.drawWin(g2);
             }
-        }   
+        }
+        mc.draw(g2);
         g2.dispose();
     }
 }

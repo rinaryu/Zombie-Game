@@ -61,6 +61,7 @@ public class Exit {
         int x = 150;
         int y = 50;
         g2.drawImage(winScreen, x, y, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
+        gamePanel.gameCont = false;
     }
 
 }
