@@ -31,7 +31,6 @@ public class Exit {
      */
     public void getExitImage() {
         try {
-
             sprite = ImageIO.read(getClass().getResourceAsStream("/exit.png"));
 
         } catch (IOException e) {
@@ -44,11 +43,12 @@ public class Exit {
      * 
      */
     public void update(){
-        if(gamePanel.mc.rewardsCollected == 5){
+        if(gamePanel.mc.rewardsCollected == 6){
             exitable = true;
+            System.out.println("exitable becomes true");
         }
-        if(exitable){
-//            System.out.println("GG");
+        if(exitable && gamePanel.mc.x == 676 && gamePanel.mc.y == 484){
+            System.out.println("aldjfalsd");
             //win here
         }
     }
