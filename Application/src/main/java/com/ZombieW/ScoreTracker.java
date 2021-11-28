@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * This class has the static fields required for the player's score and timer
+ */
 public class ScoreTracker {
     private int timeStart;
     private BufferedImage boardImg;

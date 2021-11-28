@@ -7,7 +7,7 @@ import java.io.IOException;
 
 /**
  * Class that holds static fields for the in-game rewards.
- * Also has getter/setter methods for the certain static fields. 
+ * Also has getter/setter methods for the certain static fields.
  */
 public class Reward {
     private boolean collectionStatus;
@@ -56,7 +56,6 @@ public class Reward {
      * @return a boolean value, true if reward has been collected
      */
     public boolean getCollectStatus() { return collectionStatus; }
-
     /**
      * Fetch the number of points that should be rewarded
      * @return an integer that contains the amount of points rewarded
@@ -81,9 +80,9 @@ public class Reward {
      * @param g2
      */
     public void draw(Graphics2D g2){
-        BufferedImage image = reward;
+//        BufferedImage image = reward;
         if(!getCollectStatus()) {
-            g2.drawImage(image, x, y, gamePanel.tileSize-5, gamePanel.tileSize-10, null);
+            g2.drawImage(reward, x, y, gamePanel.tileSize-5, gamePanel.tileSize-10, null);
         }
     }
 }
