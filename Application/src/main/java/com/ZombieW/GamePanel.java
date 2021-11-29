@@ -95,7 +95,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     /**
-     * While game run time, updates character movement position.
+     * This method includes the game loop thread and updates the character's
+     * position after every movement.
      */
     @Override
     public void run() {
@@ -105,11 +106,10 @@ public class GamePanel extends JPanel implements Runnable {
 
         int counter = 0;
         while (mainThread != null && gameCont){
+            update();
+            repaint();
 
             if ((keyInput.left || keyInput.right || keyInput.up || keyInput.down) && counter == 0){
-
-                update();
-                repaint();
                 counter = 1;
                 keyInput.left = false;
                 keyInput.right = false;
@@ -118,8 +118,13 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             try {
-                Thread.sleep(100);
+                double remainingTime = (nextDrawTime - System.nanoTime())/1000000;
                 counter = 0;
+                if (remainingTime < 0) {
+                    remainingTime = 0;
+                }
+                Thread.sleep((long) remainingTime);
+                nextDrawTime += drawInterval;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -150,6 +155,7 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D)g;
 
         gridManager.draw(g2);
+        mc.draw(g2);
 
         scores.draw(g2); //score board graphic image
 
@@ -166,8 +172,7 @@ public class GamePanel extends JPanel implements Runnable {
                 exit.drawWin(g2);
             }
         }
-        mc.draw(g2);
-        scores.drawScore(g2);
+        scores.drawScoreTime(g2);
         g2.dispose();
     }
 }

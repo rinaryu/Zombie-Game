@@ -4,24 +4,28 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 /**
  * This class has the static fields required for the player's score and timer
  */
 public class ScoreTracker {
-    private int timeStart;
+    GamePanel gamePanel;
+
+    Font scoreFont;
+    private double playTime;
+    DecimalFormat tFormat = new DecimalFormat("#0.00");
+
     private BufferedImage boardImg;
     private BufferedImage timer;
+
+    //positions of scoreboard and timer graphical images
     private final int posX = 300;
     private final int posY = 3;
 
-    Font scoreFont;
-
-    GamePanel gamePanel;
-
     public ScoreTracker(GamePanel gamePanel){
         this.gamePanel = gamePanel;
-        this.timeStart = 0;
+        playTime = 0;
 
         getImages();
 
@@ -43,10 +47,15 @@ public class ScoreTracker {
         g2.drawImage(timer, posX + sizeW + 20, posY, sizeW, sizeH, null);
     }
 
-    public void drawScore(Graphics2D g2) {
+    public void drawScoreTime(Graphics2D g2) {
+        int x = 347;
+        int y = 32;
         String scoreNum = String.valueOf(gamePanel.mc.score);
         g2.setFont(scoreFont);
-        g2.drawString(scoreNum, 347, 32);
+        g2.drawString(scoreNum, x, y);
+
+        playTime += (double)1/60;
+        g2.drawString(String.valueOf(tFormat.format(playTime)), x + 100, y);
     }
 
 }
