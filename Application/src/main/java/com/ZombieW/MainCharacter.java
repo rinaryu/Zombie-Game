@@ -86,9 +86,6 @@ public class MainCharacter extends Character {
      * @param g2 the graphics2D Object which is used to display the main character onto the screen
      */
     public void draw(Graphics2D g2) {
-//        g2.setColor(Color.white);
-//        g2.fillRect(x, y, gamePanel.tileSize, gamePanel.tileSize);
-
         g2.drawImage(sprite, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 }

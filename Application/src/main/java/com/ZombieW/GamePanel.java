@@ -43,6 +43,8 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyInput);
         this.setFocusable(true);
 
+        this.setLayout(null);
+
         for(int i = 0; i < r.length; i++){
             r[i] = new Reward(this);
             int temp = generateRandomX();
@@ -139,15 +141,6 @@ public class GamePanel extends JPanel implements Runnable {
         exit.update();
     }
 
-    private void scoreUpdate() {
-        //TODO: unfinished --> trying to add score tracker number || problem: label not displaying on panel
-        String score = String.valueOf(mc.score);
-        JLabel scoreLabel = new JLabel(score);
-        add(scoreLabel);
-        scoreLabel.setLocation(200, 3);
-        scoreLabel.setSize(20,20);
-    }
-
     /**
      * Calls draw methods to create graphics on game frame for each respective asset.
      * @param g
@@ -158,9 +151,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         gridManager.draw(g2);
 
-        scoreUpdate(); //TODO: related to fixing scoreboard
-
         scores.draw(g2); //score board graphic image
+
         for(int i = 0; i < zomb.length; i++){
             zomb[i].draw(g2);
         }
@@ -175,6 +167,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         mc.draw(g2);
+        scores.drawScore(g2);
         g2.dispose();
     }
 }

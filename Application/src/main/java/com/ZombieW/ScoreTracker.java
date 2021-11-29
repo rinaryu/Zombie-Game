@@ -15,6 +15,8 @@ public class ScoreTracker {
     private final int posX = 300;
     private final int posY = 3;
 
+    Font scoreFont;
+
     GamePanel gamePanel;
 
     public ScoreTracker(GamePanel gamePanel){
@@ -22,6 +24,8 @@ public class ScoreTracker {
         this.timeStart = 0;
 
         getImages();
+
+        scoreFont = new Font("Arial", Font.BOLD, 18);
     }
 
     private void getImages() {
@@ -32,13 +36,17 @@ public class ScoreTracker {
             e.printStackTrace();
         }
     }
-//    public BufferedImage getBoardImg() { return boardImg;}
-
     public void draw(Graphics2D g2) {
         int sizeW = gamePanel.tileSize + 40;
         int sizeH = gamePanel.tileSize;
         g2.drawImage(boardImg, posX, posY, sizeW, sizeH, null);
         g2.drawImage(timer, posX + sizeW + 20, posY, sizeW, sizeH, null);
+    }
+
+    public void drawScore(Graphics2D g2) {
+        String scoreNum = String.valueOf(gamePanel.mc.score);
+        g2.setFont(scoreFont);
+        g2.drawString(scoreNum, 347, 32);
     }
 
 }
