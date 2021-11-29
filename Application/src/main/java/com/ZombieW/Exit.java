@@ -11,8 +11,11 @@ import java.io.IOException;
 public class Exit {
     public GamePanel gamePanel;
     public boolean exitable;
+
     private BufferedImage exitDoor;
     private BufferedImage winScreen;
+    private BufferedImage gameOverSc;
+
     private int x;
     private int y;
 
@@ -34,6 +37,7 @@ public class Exit {
         try {
             exitDoor = ImageIO.read(getClass().getResourceAsStream("/exit.png"));
             winScreen = ImageIO.read(getClass().getResourceAsStream("/win.png"));
+            gameOverSc = ImageIO.read(getClass().getResourceAsStream("/gameOver.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +49,7 @@ public class Exit {
      * 
      */
     public void update(){
-        if(gamePanel.mc.rewardsCollected == 6){
+        if(gamePanel.mc.rewardsCollected == 5){
             exitable = true;
         }
     }
@@ -61,6 +65,13 @@ public class Exit {
         int x = 150;
         int y = 50;
         g2.drawImage(winScreen, x, y, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
+        gamePanel.gameCont = false;
+    }
+
+    public void drawLose(Graphics2D g2) {
+        int posX = 150;
+        int posY = 50;
+        g2.drawImage(gameOverSc, posX, posY, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
         gamePanel.gameCont = false;
     }
 

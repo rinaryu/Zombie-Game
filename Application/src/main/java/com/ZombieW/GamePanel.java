@@ -106,10 +106,13 @@ public class GamePanel extends JPanel implements Runnable {
 
         int counter = 0;
         while (mainThread != null && gameCont){
-            update();
-            repaint();
+//            update();
+//            repaint();
 
             if ((keyInput.left || keyInput.right || keyInput.up || keyInput.down) && counter == 0){
+                update();
+                repaint();
+
                 counter = 1;
                 keyInput.left = false;
                 keyInput.right = false;
@@ -168,9 +171,12 @@ public class GamePanel extends JPanel implements Runnable {
         movingZomb.draw(g2);
         if(exit.exitable) {
             exit.draw(g2);
-            if(mc.x == 676 && mc.y == 484) {
+            if(mc.x == 676 && mc.y == 484) { // player makes it to the door
                 exit.drawWin(g2);
             }
+        }
+        if (mc.score < 0) { // player score is negative
+            exit.drawLose(g2);
         }
         scores.drawScoreTime(g2);
         g2.dispose();

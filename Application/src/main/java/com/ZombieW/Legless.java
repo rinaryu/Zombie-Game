@@ -39,9 +39,6 @@ class Legless extends Zombie{
             gamePanel.mc.score = gamePanel.mc.score - damage;
             defeated = true;
         }
-        if(mc.score < 0){
-            System.out.println("Game Over");
-        }
     }
     /**
      * used for drawing the image to the game
