@@ -1,3 +1,5 @@
+import com.ZombieW.Game;
+import com.ZombieW.GamePanel;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,9 +11,9 @@ public class GameTest {
     }
 
     @Test
-    public void demoTestTwo() { // intentionally false test case
-        assertTrue(false);
+    public void negScoreTest() {
+        GamePanel testPanel = new GamePanel();
     }
 
-    
+
 }
