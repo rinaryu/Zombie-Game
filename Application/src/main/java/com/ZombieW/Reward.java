@@ -10,12 +10,12 @@ import java.io.IOException;
  * Also has getter/setter methods for the certain static fields.
  */
 public class Reward {
-    private boolean collected;
-    private int pointsRewarded;
-    public int x;
-    public int y;
-    public BufferedImage reward;
-    GamePanel gamePanel;
+    protected boolean collected;
+    protected int pointsRewarded;
+    protected int x;
+    protected int y;
+    protected BufferedImage reward;
+    protected GamePanel gamePanel;
 
     public Reward(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -50,12 +50,12 @@ public class Reward {
      * Sets the attribute status to the boolean parameter
      * @param status
      */
-    private void setCollectionStatus(boolean status) { collected = status; }
+    protected void setCollectionStatus(boolean status) { collected = status; }
     public void update(){
         if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y && !collected){
             gamePanel.mc.score += getPoints();
             setCollectionStatus(true);
-            gamePanel.mc.rewardsCollected++;
+            gamePanel.mc.addReward();
         }
     }
 

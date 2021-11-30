@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 class Legless extends Zombie{
     private int damage;
-    public boolean defeated;
+    private boolean defeated;
     public Legless(GamePanel gp, MainCharacter mc){
         super(gp, mc);
         damage = 3;
@@ -35,7 +35,7 @@ class Legless extends Zombie{
      * or if the score is less than 0, the game is over.
      */
     public void update(){
-        if(gamePanel.mc.x == this.x && gamePanel.mc.y == this.y){
+        if(gamePanel.mc.x == this.getX() && gamePanel.mc.y == this.getY()){
             gamePanel.mc.score = gamePanel.mc.score - damage;
             defeated = true;
         }
@@ -47,7 +47,7 @@ class Legless extends Zombie{
     public void draw(Graphics2D g2) {
         if(!defeated) {
             BufferedImage image = sprite;
-            g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+            g2.drawImage(image, getX(), getY(), gamePanel.tileSize, gamePanel.tileSize, null);
         }
     }
 }

@@ -64,8 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
                 temp = generateRandomX();
                 temp2 = generateRandomY();
             }
-            zomb[i].x = (temp-1)*48+52;
-            zomb[i].y = (temp2-1)*48+52;
+            zomb[i].setX((temp-1)*48+52);
+            zomb[i].setY((temp2-1)*48+52);
         }
 
     }

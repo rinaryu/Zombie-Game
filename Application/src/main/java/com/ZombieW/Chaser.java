@@ -36,16 +36,19 @@ class Chaser extends Zombie{
      * if the character is caught the game is over
      */
     public void update() {
-        if (mc.x < this.x && gamePanel.gridManager.mapGridNum[((x - oneMove - 52) / 48 + 1)][((y - 52) / 48 + 1)] != 1) {
-            x -= oneMove;
-        } else if (mc.x > this.x && gamePanel.gridManager.mapGridNum[((x + oneMove - 52) / 48 + 1)][((y - 52) / 48 + 1)] != 1) {
-            x += oneMove;
+        if (mc.x < this.getX() && gamePanel.gridManager.mapGridNum[((this.getX() - oneMove - 52) / 48 + 1)][((this.getY() - 52) / 48 + 1)] != 1) {
+            this.subX(oneMove);
+        } else if (mc.x > this.getX() && gamePanel.gridManager.mapGridNum[((this.getX() + oneMove - 52) / 48 + 1)][((this.getY() - 52) / 48 + 1)] != 1) {
+            this.addX(oneMove);
         } else {
-            if (mc.y < this.y && gamePanel.gridManager.mapGridNum[((x - 52) / 48 + 1)][((y - oneMove - 52) / 48 + 1)] != 1) {
-                y -= oneMove;
-            } else if (mc.y > this.y && gamePanel.gridManager.mapGridNum[((x - 52) / 48 + 1)][((y + oneMove - 52) / 48 + 1)] != 1) {
-                y += oneMove;
+            if (mc.y < this.getY() && gamePanel.gridManager.mapGridNum[((this.getX() - 52) / 48 + 1)][((this.getY() - oneMove - 52) / 48 + 1)] != 1) {
+                this.subY(oneMove);
+            } else if (mc.y > this.getY() && gamePanel.gridManager.mapGridNum[((this.getX() - 52) / 48 + 1)][((this.getY() + oneMove - 52) / 48 + 1)] != 1) {
+                this.addY(oneMove);
             }
+        }
+        if(this.getX() == gamePanel.mc.x && this.getY() == gamePanel.mc.y){
+            System.out.println("Game Over");
         }
     }
     /**
@@ -54,9 +57,9 @@ class Chaser extends Zombie{
      */
     public void draw(Graphics2D g2) {
         BufferedImage image = sprite;
-        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(image, this.getX(), this.getY(), gamePanel.tileSize, gamePanel.tileSize, null);
 
-        if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
+        if(this.getX() == gamePanel.mc.x && this.getY() == gamePanel.mc.y){
             gamePanel.exit.drawLose(g2);
         }
     }

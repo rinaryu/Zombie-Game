@@ -49,7 +49,7 @@ public class Exit {
      * 
      */
     public void update(){
-        if(gamePanel.mc.rewardsCollected == 5){
+        if(gamePanel.mc.getRewardsCollected() == 5){
             exitable = true;
         }
     }

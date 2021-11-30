@@ -2,6 +2,7 @@ package com.ZombieW;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -11,7 +12,7 @@ public class MainCharacter extends Character {
 
     KeyInput keyInput;
     GamePanel gamePanel;
-    public int rewardsCollected;
+    private int rewardsCollected;
 
     /**
      * Returns a MainCharacter object which can then be drawn onto the screen
@@ -44,7 +45,7 @@ public class MainCharacter extends Character {
      */
     public void getMainCharacterImage() {
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/art.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,18 +60,23 @@ public class MainCharacter extends Character {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-oneMove-52)/48+1)] != 1) {
                 y -= oneMove;
             }
+            System.out.println("X: " + x + ", Y: " + y);
+//            System.out.println(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-52)/48+1)]);
         } else if (keyInput.down) {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y+oneMove-52)/48+1)] != 1){
                 y += oneMove;
             }
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         } else if (keyInput.left) {
             if(gamePanel.gridManager.mapGridNum[((x-oneMove-52)/48+1)][((y-52)/48+1)] != 1){
                 x -= oneMove;
             }
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         } else if (keyInput.right) {
             if(gamePanel.gridManager.mapGridNum[((x+oneMove-52)/48+1)][((y-52)/48+1)] != 1) {
                 x += oneMove;
             }
+            System.out.println("X: " + ((x-52)/48+1) + ", Y: " + ((y-52)/48+1));
         }
     }
 
@@ -79,6 +85,17 @@ public class MainCharacter extends Character {
      * @param g2 the graphics2D Object which is used to display the main character onto the screen
      */
     public void draw(Graphics2D g2) {
-        g2.drawImage(sprite, x, y, gamePanel.tileSize-15, gamePanel.tileSize, null);
+//        g2.setColor(Color.white);
+//        g2.fillRect(x, y, gamePanel.tileSize, gamePanel.tileSize);
+
+        BufferedImage image = sprite;
+        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+    }
+
+    public int getRewardsCollected() {
+        return rewardsCollected;
+    }
+    public void addReward(){
+        rewardsCollected += 1;
     }
 }
