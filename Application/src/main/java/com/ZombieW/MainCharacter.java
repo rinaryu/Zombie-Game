@@ -45,7 +45,7 @@ public class MainCharacter extends Character {
      */
     public void getMainCharacterImage() {
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/art.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,6 +86,6 @@ public class MainCharacter extends Character {
      * @param g2 the graphics2D Object which is used to display the main character onto the screen
      */
     public void draw(Graphics2D g2) {
-        g2.drawImage(sprite, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(sprite, x, y, gamePanel.tileSize-15, gamePanel.tileSize, null);
     }
 }
