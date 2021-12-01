@@ -61,20 +61,6 @@ public class Exit {
         g2.drawImage(exitDoor, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 
-//    public void drawWin(Graphics2D g2) {
-//        int x = 150;
-//        int y = 50;
-//        g2.drawImage(winScreen, x, y, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
-//        gamePanel.gameCont = false;
-//    }
-//
-//    public void drawLose(Graphics2D g2) {
-//        int posX = 150;
-//        int posY = 50;
-//        g2.drawImage(gameOverSc, posX, posY, gamePanel.tileSize*10, gamePanel.tileSize*8, null);
-//        gamePanel.gameCont = false;
-//    }
-
     public void drawResult(Graphics2D g2, boolean res) {
         int x = 150;
         int y = 50;
