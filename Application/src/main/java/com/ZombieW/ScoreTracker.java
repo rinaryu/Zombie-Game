@@ -32,6 +32,9 @@ public class ScoreTracker {
         scoreFont = new Font("Arial", Font.BOLD, 18);
     }
 
+    /**
+     * Gets images of scoreboard and timer from resource folder
+     */
     private void getImages() {
         try {
             boardImg = ImageIO.read(getClass().getResourceAsStream("/scoreboard.png"));
@@ -40,6 +43,11 @@ public class ScoreTracker {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Method that draws both the scoreboard and timer onto the game panel.
+     * @param g2
+     */
     public void draw(Graphics2D g2) {
         int sizeW = gamePanel.tileSize + 40;
         int sizeH = gamePanel.tileSize;
@@ -47,6 +55,10 @@ public class ScoreTracker {
         g2.drawImage(timer, posX + sizeW + 20, posY, sizeW, sizeH, null);
     }
 
+    /**
+     * Method that displays the score and timer numbers onto each respective graphical image on the game panel.
+     * @param g2
+     */
     public void drawScoreTime(Graphics2D g2) {
         int x = 347;
         int y = 32;
