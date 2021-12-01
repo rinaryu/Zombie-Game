@@ -114,12 +114,12 @@ public class GamePanel extends JPanel implements Runnable {
 
         int counter = 0;
         while (mainThread != null && gameCont){
-//            update();
-//            repaint();
+            update();
+            repaint();
 
             if ((keyInput.left || keyInput.right || keyInput.up || keyInput.down) && counter == 0){
-                update();
-                repaint();
+//                update();
+//                repaint();
 
                 counter = 1;
                 keyInput.left = false;
