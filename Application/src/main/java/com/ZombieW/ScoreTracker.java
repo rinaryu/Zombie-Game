@@ -22,7 +22,6 @@ public class ScoreTracker {
     //positions of scoreboard and timer graphical images
     private final int posX = 300;
     private final int posY = 3;
-    public Label foo;
 
     public ScoreTracker(GamePanel gamePanel){
         this.gamePanel = gamePanel;
