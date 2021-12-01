@@ -172,11 +172,11 @@ public class GamePanel extends JPanel implements Runnable {
         if(exit.exitable) {
             exit.draw(g2);
             if(mc.x == 676 && mc.y == 484) { // player makes it to the door
-                exit.drawWin(g2);
+                exit.drawResult(g2, true);
             }
         }
         if (mc.score < 0) { // player score is negative
-            exit.drawLose(g2);
+            exit.drawResult(g2, false);
         }
         scores.drawScoreTime(g2);
         g2.dispose();

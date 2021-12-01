@@ -57,7 +57,7 @@ class Chaser extends Zombie{
         g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
 
         if(this.x == gamePanel.mc.x && this.y == gamePanel.mc.y){
-            gamePanel.exit.drawLose(g2);
+            gamePanel.exit.drawResult(g2, false);
         }
     }
 
