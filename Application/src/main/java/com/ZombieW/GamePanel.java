@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
     Legless zomb[] = new Legless[3];
     Reward r[] = new Reward[5];
     Exit exit = new Exit(this);
-
+    Bonus bonusReward = new Bonus(this);
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -64,10 +64,18 @@ public class GamePanel extends JPanel implements Runnable {
                 temp = generateRandomX();
                 temp2 = generateRandomY();
             }
-            zomb[i].x = (temp-1)*48+52;
-            zomb[i].y = (temp2-1)*48+52;
+            zomb[i].setX((temp-1)*48+52);
+            zomb[i].setY((temp2-1)*48+52);
         }
-
+        int temp = generateRandomX();
+        int temp2 = generateRandomY();
+        while(this.gridManager.mapGridNum[temp][temp2] == 1){
+            temp = generateRandomX();
+            temp2 = generateRandomY();
+        }
+        System.out.println(temp);
+        bonusReward.x = (temp-1)*48+52;
+        bonusReward.y = (temp2-1)*48+52;
     }
 
     /**
@@ -146,6 +154,7 @@ public class GamePanel extends JPanel implements Runnable {
         for(int i = 0; i < zomb.length; i++){
             zomb[i].update();
         }
+        bonusReward.update();
         exit.update();
     }
 
@@ -168,6 +177,7 @@ public class GamePanel extends JPanel implements Runnable {
         for(int i = 0; i < r.length; i++){
             r[i].draw(g2);
         }
+        bonusReward.draw(g2);
         movingZomb.draw(g2);
         if(exit.exitable) {
             exit.draw(g2);

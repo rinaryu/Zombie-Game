@@ -1,9 +1,7 @@
 package com.ZombieW;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * This is an abstract class for a zombie character.
@@ -11,9 +9,8 @@ import java.io.IOException;
  * As well as a draw method for the zombie graphic.
  */
 abstract class Zombie {
-  public int damage;
-  public int x;
-  public int y;
+  private int x;
+  private int y;
   public int oneMove;
   GamePanel gamePanel;
   MainCharacter mc;
@@ -40,23 +37,6 @@ abstract class Zombie {
     oneMove = 16*3; // was 4
   }
 
-  /**
-   * Returns an integer that has the amount of damage that a zombie can do when
-   * close enough to a player
-   * @return the amount of damage in an integer
-   */
-  public int getDamage(){
-      return damage;
-  }
-
-  /**
-   * Sets the damage integer attribute to the provided parameter
-   * @param damage the amount of damage you want the zombie to have
-   */
-  public void setDamage(int damage){
-      this.damage = damage;
-  }
-
   abstract void getZombieImage();
 
   /**
@@ -64,4 +44,28 @@ abstract class Zombie {
    * @param g2 the graphics2D Object which is used to display the zombie onto the screen
    */
   abstract public void draw(Graphics2D g2);
+  public int getX(){
+    return x;
+  }
+  public int getY(){
+    return y;
+  }
+  public void addX(int oneMove){
+    x += oneMove;
+  }
+  public void addY(int oneMove){
+    y += oneMove;
+  }
+  public void subX(int oneMove){
+    x -= oneMove;
+  }
+  public void subY(int oneMove){
+    y -= oneMove;
+  }
+  public void setX(int x){
+    this.x = x;
+  }
+  public void setY(int y){
+    this.y = y;
+  }
 }
