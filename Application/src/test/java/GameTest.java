@@ -30,8 +30,24 @@ public class GameTest {
     }
 
     @Test
-    public void collisionTest() {
+    public void chaserTest() {
+        //instantiating test object
+        Chaser testZombie = new Chaser(null, null);
 
+        //testing zombie image is successfully obtained
+        assertNotNull(testZombie.sprite);
+    }
+
+    @Test
+    public void leglessTest() {
+        //instantiating test object
+        Legless testZombie = new Legless(null, null);
+
+        //testing zombie image is successfully obtained
+        assertNotNull(testZombie.sprite);
+
+        //testing zombie damage to player score
+        assertEquals(3, testZombie.getDamage());
     }
 
 

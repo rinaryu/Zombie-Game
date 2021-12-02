@@ -9,7 +9,7 @@ import java.io.IOException;
  * class for different type of zombie. One without legs
  * which deals 3 damage
  */
-class Legless extends Zombie{
+public class Legless extends Zombie{
     private int damage;
     private boolean defeated;
     public Legless(GamePanel gp, MainCharacter mc){
@@ -50,4 +50,10 @@ class Legless extends Zombie{
             g2.drawImage(image, getX(), getY(), gamePanel.tileSize, gamePanel.tileSize, null);
         }
     }
+
+    /**
+     * Helper method for testing with JUnit
+     * @return damage
+     */
+    public int getDamage() { return damage; }
 }

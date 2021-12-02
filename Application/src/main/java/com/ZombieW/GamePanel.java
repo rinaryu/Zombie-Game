@@ -35,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
     Reward r[] = new Reward[5];
     Exit exit = new Exit(this);
     Bonus bonusReward = new Bonus(this);
+
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);

@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  *Class used to making the zombie that chases the player
  */
-class Chaser extends Zombie{
+public class Chaser extends Zombie{
     private BufferedImage gameOverSc;
 
     /**

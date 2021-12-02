@@ -26,7 +26,6 @@ abstract class Zombie {
     this.mc = mc;
     setDefaultValues();//for the parent class
     getZombieImage();
-
   }
   /**
    * Sets the default values for the object when initialized
