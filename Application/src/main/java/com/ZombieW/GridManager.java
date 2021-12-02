@@ -26,14 +26,10 @@ public class GridManager {
      */
     public void getGridImage(){
         try{
-            //for (int i = 0; i<=9; i++){
-                //grids[i] = new Grid();
-                grids[0] = new Grid();
-                grids[1] = new Grid();
-                grids[0].image = ImageIO.read(getClass().getResourceAsStream("/fllor.png"));
-                grids[1].image = ImageIO.read(getClass().getResourceAsStream("/all.png"));
-            //}
-
+            grids[0] = new Grid();
+            grids[1] = new Grid();
+            grids[0].image = ImageIO.read(getClass().getResourceAsStream("/fllor.png"));
+            grids[1].image = ImageIO.read(getClass().getResourceAsStream("/all.png"));
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -78,7 +74,6 @@ public class GridManager {
      * @param g2
      */
     public void draw(Graphics2D g2){
-        //g2.drawImage(grids[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
         int col = 0;
         int row = 0;
         int x = 0;

@@ -47,9 +47,6 @@ class Chaser extends Zombie{
                 this.addY(oneMove);
             }
         }
-        if(this.getX() == gamePanel.mc.x && this.getY() == gamePanel.mc.y){
-            System.out.println("Game Over");
-        }
     }
     /**
      * used to draw the moving zombie to the game

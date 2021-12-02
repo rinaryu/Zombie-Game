@@ -30,10 +30,6 @@ public class SpriteSheet {
 
         pixels = image.getRGB(0, 0, width, height, null, 0, width);
 
-//        for (int i = 0; i<pixels.length; i++){
-//
-//        }
-
         for (int i = 0; i<8; i++){
             System.out.println(pixels[i]);
         }
