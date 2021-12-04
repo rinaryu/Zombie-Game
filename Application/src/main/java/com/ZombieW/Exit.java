@@ -9,8 +9,8 @@ import java.io.IOException;
  * Class used for the exit of the game
  */
 public class Exit {
-    public GamePanel gamePanel;
-    public boolean exitable;
+    private GamePanel gamePanel;
+    private boolean exitable;
 
     private BufferedImage exitDoor;
     private BufferedImage winScreen;
@@ -29,7 +29,9 @@ public class Exit {
         this.y = 484;
         getExitImage();
     }
-
+    public boolean isExitable(){
+        return exitable;
+    }
     /**
      * getting and using image of the door/exit
      */

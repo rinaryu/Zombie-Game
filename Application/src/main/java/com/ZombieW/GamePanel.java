@@ -23,18 +23,18 @@ public class GamePanel extends JPanel implements Runnable {
     //fps
     int fps = 10;
 
-    GridManager gridManager = new GridManager(this);
-    KeyInput keyInput = new KeyInput();
+    public GridManager gridManager = new GridManager(this);
+    public KeyInput keyInput = new KeyInput();
     Thread mainThread;
 
     ScoreTracker scores = new ScoreTracker(this);
 
-    MainCharacter mc = new MainCharacter(this, keyInput);
-    Chaser movingZomb = new Chaser(this, mc);
-    Legless zomb[] = new Legless[3];
-    Reward r[] = new Reward[5];
-    Exit exit = new Exit(this);
-    Bonus bonusReward = new Bonus(this);
+    public MainCharacter mc = new MainCharacter(this, keyInput);
+    public Chaser movingZomb = new Chaser(this, mc);
+    public Legless zomb[] = new Legless[3];
+    public Reward r[] = new Reward[5];
+    public Exit exit = new Exit(this);
+    public Bonus bonusReward = new Bonus(this);
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -180,7 +180,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
         bonusReward.draw(g2);
         movingZomb.draw(g2);
-        if(exit.exitable) {
+        if(exit.isExitable()) {
             exit.draw(g2);
             if(mc.x == 676 && mc.y == 484) { // player makes it to the door
                 exit.drawResult(g2, true);

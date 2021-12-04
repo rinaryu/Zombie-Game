@@ -20,6 +20,9 @@ public class GridManager {
         getGridImage();
         populateMap();
     }
+    public int[][] getMapGridNum(){
+        return mapGridNum;
+    }
 
     /**
      *

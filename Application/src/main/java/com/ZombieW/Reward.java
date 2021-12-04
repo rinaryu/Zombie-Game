@@ -23,7 +23,6 @@ public class Reward {
         pointsRewarded = 10;
         getRewardImg();
     }
-
     /**
      * Fetches the reward image and sets the reward attribute to the image fetched -- drawn using a different method
      */
@@ -34,7 +33,12 @@ public class Reward {
             e.printStackTrace();
         }
     }
-
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
     /**
      * Checks to see if reward has been collected
      * @return a boolean value, true if reward has been collected

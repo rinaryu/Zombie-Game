@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class MainCharacter extends Character {
 
-    KeyInput keyInput;
+    public KeyInput keyInput;
     GamePanel gamePanel;
     private int rewardsCollected;
 
@@ -50,11 +50,33 @@ public class MainCharacter extends Character {
             e.printStackTrace();
         }
     }
+    public BufferedImage getSprite(){
+        return sprite;
+    }
 
     /**
      * Checks the KeyInput object in the MainCharacter class for user input and moves the
      * character accordingly on the GamePanel Object.
      */
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+    public void moveUp(){
+        y-=oneMove;
+    }
+    public void moveDown(){
+        y+=oneMove;
+    }
+    public void moveLeft(){
+        x -= oneMove;
+    }
+    public void moveRight(){
+        x += oneMove;
+    }
+
     public void update() {
         if (keyInput.up) {
             if(gamePanel.gridManager.mapGridNum[((x-52)/48+1)][((y-oneMove-52)/48+1)] != 1) {

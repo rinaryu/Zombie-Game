@@ -12,9 +12,9 @@ abstract class Zombie {
   private int x;
   private int y;
   public int oneMove;
-  GamePanel gamePanel;
-  MainCharacter mc;
-  public BufferedImage sprite;
+  protected GamePanel gamePanel;
+  protected MainCharacter mc;
+  protected BufferedImage sprite;
 
   /**
    * Returns a Zombie object which can be then painted onto the GamePanel Object
@@ -24,20 +24,15 @@ abstract class Zombie {
   public Zombie(GamePanel gp, MainCharacter mc){
     this.gamePanel = gp;
     this.mc = mc;
-    setDefaultValues();//for the parent class
+    this.x = 340;
+    this.y = 340;
+    oneMove = 48; // was 4
     getZombieImage();
   }
-  /**
-   * Sets the default values for the object when initialized
-   */
-  public void setDefaultValues() {
-    x = 340;
-    y = 340;
-    oneMove = 16*3; // was 4
-  }
-
   abstract void getZombieImage();
-
+  public BufferedImage getSprite(){
+    return sprite;
+  }
   /**
    * Displays the zombie onto the GamePanel object
    * @param g2 the graphics2D Object which is used to display the zombie onto the screen
@@ -50,16 +45,16 @@ abstract class Zombie {
     return y;
   }
   public void addX(int oneMove){
-    x += oneMove;
+    x += 6;
   }
   public void addY(int oneMove){
-    y += oneMove;
+    y += 6;
   }
   public void subX(int oneMove){
-    x -= oneMove;
+    x -= 6;
   }
   public void subY(int oneMove){
-    y -= oneMove;
+    y -= 6;
   }
   public void setX(int x){
     this.x = x;
