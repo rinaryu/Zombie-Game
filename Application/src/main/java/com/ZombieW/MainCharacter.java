@@ -45,7 +45,7 @@ public class MainCharacter extends Character {
      */
     public void getMainCharacterImage() {
         try {
-            sprite = ImageIO.read(getClass().getResourceAsStream("/art.png"));
+            sprite = ImageIO.read(getClass().getResourceAsStream("/player.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,7 +103,7 @@ public class MainCharacter extends Character {
      */
     public void draw(Graphics2D g2) {
         BufferedImage image = sprite;
-        g2.drawImage(image, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
+        g2.drawImage(image, x, y, gamePanel.tileSize-18, gamePanel.tileSize, null);
     }
 
     public int getRewardsCollected() {
