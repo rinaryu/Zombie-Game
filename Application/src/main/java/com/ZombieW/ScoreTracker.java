@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
  */
 public class ScoreTracker {
     GamePanel gamePanel;
-
+    public int counter;
     Font scoreFont;
     private double playTime;
     DecimalFormat tFormat = new DecimalFormat("#0.00");
@@ -67,6 +67,14 @@ public class ScoreTracker {
         g2.drawString(scoreNum, x, y);
 
         playTime += (double)1/60;
+        counter += 1;
+        if(counter % 3 == 0){
+            gamePanel.updateZombFlag = true;
+        }
+        else{
+            gamePanel.updateZombFlag = false;
+        }
+
         g2.drawString(String.valueOf(tFormat.format(playTime)), x + 100, y);
     }
 

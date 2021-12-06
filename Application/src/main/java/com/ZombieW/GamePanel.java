@@ -2,14 +2,14 @@ package com.ZombieW;
 
 import javax.swing.*;
 import java.awt.*;
-
+import java.lang.Math;
 /**
  * This class creates the main game panel that draws all the graphical assets including the grid map board and its
  * frame size.
  */
 public class GamePanel extends JPanel implements Runnable {
     public boolean gameCont = true;
-
+    public boolean updateZombFlag = false;
     final int size = 16; //standard size
     final int scale = 3;
 
@@ -111,10 +111,9 @@ public class GamePanel extends JPanel implements Runnable {
         double drawInterval = 1000000000/fps; //nanoseconds
         //we draw screen 60 times per second
         double nextDrawTime = System.nanoTime() + drawInterval;
-
         int counter = 0;
         while (mainThread != null && gameCont){
-            if(nextDrawTime % 6 == 0){
+            if(updateZombFlag){
                 updateZomb();
             }
             update();
