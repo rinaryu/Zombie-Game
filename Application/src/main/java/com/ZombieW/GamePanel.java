@@ -74,7 +74,6 @@ public class GamePanel extends JPanel implements Runnable {
             temp = generateRandomX();
             temp2 = generateRandomY();
         }
-        System.out.println(temp);
         bonusReward.x = (temp-1)*48+52;
         bonusReward.y = (temp2-1)*48+52;
     }
@@ -119,9 +118,6 @@ public class GamePanel extends JPanel implements Runnable {
             repaint();
 
             if ((keyInput.left || keyInput.right || keyInput.up || keyInput.down) && counter == 0){
-//                update();
-//                repaint();
-
                 counter = 1;
                 keyInput.left = false;
                 keyInput.right = false;
