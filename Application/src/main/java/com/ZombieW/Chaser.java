@@ -29,8 +29,7 @@ public class Chaser extends Zombie{
     }
 
     /**
-     * this allows for the zombie to chase the character
-     * if the character is caught the game is over
+     * this allows for the zombie to chase the character, if there is no valid move, the zombie will not move
      */
     public void update() {
         if (mc.x < this.getX() && gamePanel.gridManager.mapGridNum[((this.getX() - oneMove - 52) / 48 + 1)][((this.getY() - 52) / 48 + 1)] != 1) {

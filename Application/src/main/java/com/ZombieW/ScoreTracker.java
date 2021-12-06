@@ -10,11 +10,11 @@ import java.text.DecimalFormat;
  * This class has the static fields required for the player's score and timer
  */
 public class ScoreTracker {
-    GamePanel gamePanel;
-    public int counter;
-    Font scoreFont;
+    public GamePanel gamePanel;
+    private int counter;
+    public Font scoreFont;
     private double playTime;
-    DecimalFormat tFormat = new DecimalFormat("#0.00");
+    public DecimalFormat tFormat = new DecimalFormat("#0.00");
 
     private BufferedImage boardImg;
     private BufferedImage timer;
@@ -69,10 +69,10 @@ public class ScoreTracker {
         playTime += (double)1/60;
         counter += 1;
         if(counter % 3 == 0){
-            gamePanel.updateZombFlag = true;
+            gamePanel.setZombFlag(1);
         }
         else{
-            gamePanel.updateZombFlag = false;
+            gamePanel.setZombFlag(0);
         }
 
         g2.drawString(String.valueOf(tFormat.format(playTime)), x + 100, y);

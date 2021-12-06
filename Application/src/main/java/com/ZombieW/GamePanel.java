@@ -9,7 +9,7 @@ import java.lang.Math;
  */
 public class GamePanel extends JPanel implements Runnable {
     public boolean gameCont = true;
-    public boolean updateZombFlag = false;
+    private boolean updateZombFlag = false;
     final int size = 16; //standard size
     final int scale = 3;
 
@@ -25,9 +25,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GridManager gridManager = new GridManager(this);
     public KeyInput keyInput = new KeyInput();
-    Thread mainThread;
+    public Thread mainThread;
 
-    ScoreTracker scores = new ScoreTracker(this);
+    public ScoreTracker scores = new ScoreTracker(this);
 
     public MainCharacter mc = new MainCharacter(this, keyInput);
     public Chaser movingZomb = new Chaser(this, mc);
@@ -46,28 +46,35 @@ public class GamePanel extends JPanel implements Runnable {
 
         this.setLayout(null);
 
-        for(int i = 0; i < r.length; i++){
-            r[i] = new Reward(this);
-            int temp = generateRandomX();
-            int temp2 = generateRandomY();
-            while(this.gridManager.mapGridNum[temp][temp2] == 1){
-                temp = generateRandomX();
-                temp2 = generateRandomY();
-            }
-            r[i].x = (temp-1)*48+52;
-            r[i].y = (temp2-1)*48+52;
-        }
         for(int i = 0; i < zomb.length; i++){
             zomb[i] = new Legless(this, mc);
             int temp = generateRandomX();
             int temp2 = generateRandomY();
-            while(this.gridManager.mapGridNum[temp][temp2] == 1){
+            while(this.gridManager.mapGridNum[temp][temp2] == 1 || (temp == 2 && temp2 == 2)){
                 temp = generateRandomX();
                 temp2 = generateRandomY();
             }
             zomb[i].setX((temp-1)*48+52);
             zomb[i].setY((temp2-1)*48+52);
         }
+        // generates random coordinates to spawn the reward
+        for(int i = 0; i < r.length; i++){
+            r[i] = new Reward(this);
+            int temp = generateRandomX();
+            int temp2 = generateRandomY();
+            while(this.gridManager.mapGridNum[temp][temp2] == 1 || (temp == 2 && temp2 == 2)){
+                temp = generateRandomX();
+                temp2 = generateRandomY();
+                for(int j = 0; j < zomb.length; j++){
+                    if(zomb[j].getX() == ((temp-1)*48+52) && zomb[j].getY() == ((temp2-1)*48+52));
+                    temp = generateRandomX();
+                    temp2 = generateRandomY();
+                }
+            }
+            r[i].x = (temp-1)*48+52;
+            r[i].y = (temp2-1)*48+52;
+        }
+
         int temp = generateRandomX();
         int temp2 = generateRandomY();
         while(this.gridManager.mapGridNum[temp][temp2] == 1){
@@ -82,6 +89,14 @@ public class GamePanel extends JPanel implements Runnable {
      * Generates random x coordinate integer value.
      * @return x coordinate
      */
+    public void setZombFlag(int i){
+        if(i >= 1){
+            updateZombFlag = true;
+        }
+        else{
+            updateZombFlag = false;
+        }
+    }
     public int generateRandomX(){
         return (int) ((Math.random() * (maxScreenCol - 2 - 1)) + 1);
     }

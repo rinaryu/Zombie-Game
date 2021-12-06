@@ -4,13 +4,15 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.Math;
 
 /**
  * Sets all attributes required for main character as well as its graphic image.
  */
-public class MainCharacter extends Character {
-
+public class MainCharacter{
+    public int x, y;
+    public int oneMove;
+    public int score;
+    public BufferedImage sprite;
     public KeyInput keyInput;
     GamePanel gamePanel;
     private int rewardsCollected;

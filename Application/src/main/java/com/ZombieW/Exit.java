@@ -63,6 +63,11 @@ public class Exit {
         g2.drawImage(exitDoor, x, y, gamePanel.tileSize, gamePanel.tileSize, null);
     }
 
+    /**
+     * draws the winning screen or gameover screen
+     * @param g2
+     * @param res
+     */
     public void drawResult(Graphics2D g2, boolean res) {
         int x = 150;
         int y = 50;
