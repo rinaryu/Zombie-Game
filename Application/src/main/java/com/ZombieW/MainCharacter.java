@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.lang.Math;
 
 /**
  * Sets all attributes required for main character as well as its graphic image.
@@ -94,6 +95,11 @@ public class MainCharacter extends Character {
             if(gamePanel.gridManager.mapGridNum[((x+oneMove-52)/48+1)][((y-52)/48+1)] != 1) {
                 x += oneMove;
             }
+        }
+        else if(keyInput.check){
+            System.out.println((gamePanel.movingZomb.getX()-(float)52) /(float)48+(float)1);
+            System.out.println((gamePanel.movingZomb.getY()-52)/48+1);
+
         }
     }
 

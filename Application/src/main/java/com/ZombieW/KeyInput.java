@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
  */
 public class KeyInput implements KeyListener {
 
-    public boolean up, down, left, right;
+    public boolean up, down, left, right, check;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -35,6 +35,9 @@ public class KeyInput implements KeyListener {
         if (code == KeyEvent.VK_D){
             right = true;
         }
+        if (code == KeyEvent.VK_F){
+            check = true;
+        }
     }
     /**
      * This class is used for when the key that is pressed is released 
@@ -59,6 +62,9 @@ public class KeyInput implements KeyListener {
         if (code == KeyEvent.VK_D){
             right = false;
 
+        }
+        if (code == KeyEvent.VK_F){
+            check = false;
         }
     }
 }

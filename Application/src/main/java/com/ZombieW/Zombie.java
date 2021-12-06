@@ -45,16 +45,16 @@ abstract class Zombie {
     return y;
   }
   public void addX(int oneMove){
-    x += 6;
+    x += oneMove;
   }
   public void addY(int oneMove){
-    y += 6;
+    y += oneMove;
   }
   public void subX(int oneMove){
-    x -= 6;
+    x -= oneMove;
   }
   public void subY(int oneMove){
-    y -= 6;
+    y -= oneMove;
   }
   public void setX(int x){
     this.x = x;

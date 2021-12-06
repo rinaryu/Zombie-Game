@@ -35,7 +35,7 @@ public class Legless extends Zombie{
      * or if the score is less than 0, the game is over.
      */
     public void update(){
-        if(gamePanel.mc.x == this.getX() && gamePanel.mc.y == this.getY()){
+        if(gamePanel.mc.x == this.getX() && gamePanel.mc.y == this.getY() && defeated == false){
             gamePanel.mc.score = gamePanel.mc.score - damage;
             defeated = true;
         }
@@ -47,7 +47,7 @@ public class Legless extends Zombie{
     public void draw(Graphics2D g2) {
         if(!defeated) {
             BufferedImage image = sprite;
-            g2.drawImage(image, getX(), getY(), gamePanel.tileSize, gamePanel.tileSize, null);
+            g2.drawImage(image, Math.round(getX()), Math.round(getY()), gamePanel.tileSize, gamePanel.tileSize, null);
         }
     }
 

@@ -115,6 +115,9 @@ public class GamePanel extends JPanel implements Runnable {
 
         int counter = 0;
         while (mainThread != null && gameCont){
+            if(nextDrawTime % 6 == 0){
+                updateZomb();
+            }
             update();
             repaint();
 
@@ -148,7 +151,6 @@ public class GamePanel extends JPanel implements Runnable {
      */
     public void update(){
         mc.update();
-        movingZomb.update();
         for(int i = 0; i < r.length; i++){
             r[i].update();
         }
@@ -157,6 +159,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
         bonusReward.update();
         exit.update();
+    }
+    public void updateZomb(){
+        movingZomb.update();
     }
 
     /**

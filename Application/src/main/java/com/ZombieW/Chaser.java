@@ -45,6 +45,7 @@ public class Chaser extends Zombie{
             }
         }
     }
+
     /**
      * used to draw the moving zombie to the game
      * @param g2 the graphics2D Object which is used to display the chaser zombie onto the screen
